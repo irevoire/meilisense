@@ -1,14 +1,4 @@
-use std::{
-    fs::File,
-    io::{BufWriter, Write},
-    path::PathBuf,
-};
-
 use clap::Parser;
-use clap::Subcommand;
-use dump::{DumpWriter, IndexMetadata};
-use meilisearch_types::{milli::update::Setting, settings::Settings};
-use rocksdb::{Options, DB};
 
 #[derive(Debug, Parser)]
 #[command(

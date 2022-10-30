@@ -1,7 +1,32 @@
+use clap::Subcommand;
 use rocksdb::DB;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use time::OffsetDateTime;
+
+mod meili;
+mod typesense;
+
+#[derive(Debug, Subcommand)]
+#[command(
+    author = "tamo",
+    version,
+    about = "Provide helpers to dump data out of your typesense database."
+)]
+pub enum Opt {
+    Typesense(typesense::Opt),
+    #[clap(subcommand)]
+    Meili(meili::Opt),
+}
+
+impl Opt {
+    pub fn process(self) {
+        match self {
+            Opt::Typesense(opt) => opt.process(),
+            Opt::Meili(opt) => opt.process(),
+        }
+    }
+}
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Index {

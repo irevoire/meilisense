@@ -12,5 +12,5 @@ serde_json = { version = "1.0.87", features = ["preserve_order"] }
 colored_json = "2.1.0"
 serde = { version = "1.0.147", features = ["derive"] }
 clap = { version = "4.0.18", features = ["derive"] }
-dump = { git = "https://github.com/meilisearch/meilisearch.git", branch = "fix-dump-import-without-instance-uid" }
-meilisearch-types = { git = "https://github.com/meilisearch/meilisearch.git", branch = "fix-dump-import-without-instance-uid" }
+dump = { git = "https://github.com/meilisearch/meilisearch.git" }
+meilisearch-types = { git = "https://github.com/meilisearch/meilisearch.git" }

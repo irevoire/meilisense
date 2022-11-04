@@ -1,6 +1,7 @@
 use clap::Parser;
 
 pub mod dump;
+pub mod import;
 
 #[derive(Debug, Parser)]
 #[command(
@@ -10,12 +11,14 @@ pub mod dump;
 )]
 pub enum Opt {
     Dump(dump::Opt),
+    Import(import::Opt),
 }
 
 impl Opt {
     pub fn process(self) {
         match self {
             Opt::Dump(opt) => opt.process(),
+            Opt::Import(opt) => opt.process(),
         }
     }
 }

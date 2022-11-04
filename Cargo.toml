@@ -6,11 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rocksdb = "0.18.0"
-time = { version = "0.3.16", features = ["serde"] }
-serde_json = { version = "1.0.87", features = ["preserve_order"] }
-colored_json = "2.1.0"
-serde = { version = "1.0.147", features = ["derive"] }
+tokio = { version = "1.21.2", features = ["rt"] }
 clap = { version = "4.0.18", features = ["derive"] }
-dump = { git = "https://github.com/meilisearch/meilisearch.git" }
-meilisearch-types = { git = "https://github.com/meilisearch/meilisearch.git" }
+dump = { git = "https://github.com/meilisearch/meilisearch.git", default-features = false }
+meilisearch-sdk = "0.20.1"
+meilisearch-types = { git = "https://github.com/meilisearch/meilisearch.git", default-features = false }
+rocksdb = "0.18.0"
+serde = { version = "1.0.147", features = ["derive"] }
+serde_json = { version = "1.0.87", features = ["preserve_order"] }
+time = { version = "0.3.16", features = ["serde"] }

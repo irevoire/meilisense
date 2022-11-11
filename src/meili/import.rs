@@ -9,7 +9,7 @@ use rocksdb::{Options, DB};
 #[command(
     author = "tamo",
     version,
-    about = "Provide helpers to dump data out of your typesense database."
+    about = "Fill an already running meilisearch instance with the document in a typesense database."
 )]
 pub struct Opt {
     /// Path of the typesense datatabase.
@@ -43,9 +43,8 @@ impl Opt {
         let indexes = Index::from_db(&db);
         for index in indexes {
             println!("Creating the index `{}`.", index.name);
-            println!("Lost the primary key, let's hope it's id or somethin'");
             let remote_index = client
-                .create_index(index.name.clone(), None)
+                .create_index(index.name.clone(), Some("id"))
                 .await
                 .unwrap()
                 .wait_for_completion(&client, None, None)

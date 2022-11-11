@@ -14,7 +14,7 @@ use rocksdb::{Options, DB};
 #[command(
     author = "tamo",
     version,
-    about = "Provide helpers to dump data out of your typesense database."
+    about = "Generate a meilisearch dump from the data in your typesense database."
 )]
 pub struct Opt {
     /// Path of the typesense datatabase.
@@ -39,10 +39,9 @@ impl Opt {
         let indexes = Index::from_db(&db);
         for index in indexes {
             println!("Dumping the index `{}`.", index.name);
-            println!("Lost the primary key, let's hope it's id or somethin'");
             let metadata = IndexMetadata {
                 uid: index.name.to_string(),
-                primary_key: None,
+                primary_key: Some(String::from("id")),
                 created_at: index.created_at,
                 updated_at: index.created_at,
             };

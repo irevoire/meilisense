@@ -7,7 +7,7 @@ pub mod import;
 #[command(
     author = "tamo",
     version,
-    about = "Provide helpers to dump data out of your typesense database."
+    about = "Provide helpers to dump data out of your typesense database into your meilisearch database."
 )]
 pub enum Opt {
     Dump(dump::Opt),
